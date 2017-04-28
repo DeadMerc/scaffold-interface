@@ -32,7 +32,7 @@ class {{studly_case(ucfirst($parser->plural()))}} extends Migration
         @foreach($dataSystem->getForeignKeys() as $key)
 
         $table->integer('{{lcfirst(str_singular($key))}}_id')->unsigned()->nullable();
-        $table->foreign('{{lcfirst(str_singular($key))}}_id')->references('id')->on('{{$key}}')->onDelete('cascade');
+        $table->foreign('{{lcfirst(str_singular($key))}}_id')->references('{{lcfirst(str_singular($key))}}ID')->on('{{$key}}')->onDelete('cascade');
         @endforeach
 
         @if($dataSystem->isTimestamps())
