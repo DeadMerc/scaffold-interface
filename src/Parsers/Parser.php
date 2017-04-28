@@ -33,7 +33,7 @@ class Parser
      */
     public function singular()
     {
-        return (str_slug($this->data['TableName'], '_'));
+        return str_singular(str_slug($this->data['TableName'], '_'));
     }
 
     /**
@@ -43,7 +43,7 @@ class Parser
      */
     public function plural()
     {
-        return (str_slug($this->data['TableName'], '_'));
+        return str_plural(str_slug($this->data['TableName'], '_'));
     }
 
     /**
