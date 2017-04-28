@@ -13,15 +13,10 @@ class SqlsrvDatabase extends Database
 {
     public function tableNames()
     {
-        $collection =  collect(DB::select($this->getQuery()));
-        $collection = $collection->pluck('TABLE_NAME');
-        return $collection->all();
 
-        /*
-        return collect(DB::query($this->getQuery()))->pluck('name')->reject(function ($name) {
-            dump($name);
+        return collect(DB::select($this->getQuery()))->pluck('TABLE_NAME')->reject(function ($name) {
             return $this->skips()->contains($name);
-        });*/
+        });
     }
 
     /**
