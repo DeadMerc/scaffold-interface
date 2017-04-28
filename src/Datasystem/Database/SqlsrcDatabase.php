@@ -13,9 +13,15 @@ class SqlsrvDatabase extends Database
 {
     public function tableNames()
     {
-        return collect(DB::query($this->getQuery()))->pluck(env('DB_DATABASE'))->reject(function ($name) {
+        $collection =  collect(DB::select($this->getQuery()));
+        $collection = $collection->pluck('TABLE_NAME');
+        return $collection->all();
+
+        /*
+        return collect(DB::query($this->getQuery()))->pluck('name')->reject(function ($name) {
+            dump($name);
             return $this->skips()->contains($name);
-        });
+        });*/
     }
 
     /**
@@ -25,7 +31,8 @@ class SqlsrvDatabase extends Database
      */
     public function getQuery()
     {
-        return 'USE '.env('DB_DATABASE').'SELECT name FROM sys.tables';
+        return 'SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = \'BASE TABLE\' AND TABLE_CATALOG=\''.env('DB_DATABASE').'\'';
+        //return 'USE '.env('DB_DATABASE').'SELECT name FROM sys.tables';
     }
 
     /**
