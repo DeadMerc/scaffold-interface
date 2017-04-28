@@ -11,7 +11,7 @@ class {{ucfirst($first)}}{{ucfirst($second)}} extends Migration
     public function up()
     {
         Schema::create('{{$first}}_{{$second}}',function (Blueprint $table){
-			$table->increments('id')->unique()->index()->unsigned();
+			$table->increments('{{str_singular($first)}}ID')->unique()->index()->unsigned();
 			$table->integer('{{str_singular($first)}}_id')->unsigned()->index();
 			$table->foreign('{{str_singular($first)}}_id')->references('id')->on('{{$first}}')->onDelete('cascade');
 			$table->integer('{{str_singular($second)}}_id')->unsigned()->index();

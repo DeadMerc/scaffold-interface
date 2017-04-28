@@ -14,7 +14,7 @@ class {{ucfirst($parser->singular())}} extends Model
 	@if($dataSystem->isSoftdeletes())
 
 	use SoftDeletes;
-
+	protected $primaryKey = '{{ucfirst($parser->singular())}}ID';
 	protected $dates = ['deleted_at'];
     @endif
 

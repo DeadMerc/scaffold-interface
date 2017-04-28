@@ -42,7 +42,7 @@ class {{ucfirst($parser->singular())}}Controller extends Controller
         $title = 'Create - {{$parser->singular()}}';
         @foreach($dataSystem->getForeignKeys() as $key => $value)
 
-        ${{str_plural($value)}} = {{ucfirst(str_singular($value))}}::all()->pluck('{{$dataSystem->getOnData()[$key]}}','id');
+        ${{str_plural($value)}} = {{ucfirst(str_singular($value))}}::all()->pluck('{{$dataSystem->getOnData()[$key]}}','{{ucfirst($parser->singular())}}ID');
         @endforeach
 
         return view('@if(config('amranidev.config.loadViews')){{config('amranidev.config.loadViews')}}::@endif{{$parser->singular()}}.create'@if($dataSystem->getForeignKeys() != null),compact('title',@foreach($dataSystem->getForeignKeys() as $key => $value)'{{str_plural($value)}}' @if($value != last($dataSystem->getForeignKeys())),@endif @endforeach)@endif);
@@ -121,7 +121,7 @@ class {{ucfirst($parser->singular())}}Controller extends Controller
 
         @foreach($dataSystem->getForeignKeys() as $key => $value)
 
-        ${{str_plural($value)}} = {{ucfirst(str_singular($value))}}::all()->pluck('{{$dataSystem->getOnData()[$key]}}','id');
+        ${{str_plural($value)}} = {{ucfirst(str_singular($value))}}::all()->pluck('{{$dataSystem->getOnData()[$key]}}','{{ucfirst($parser->singular())}}ID');
 
         @endforeach
 

@@ -7,7 +7,7 @@
         <button class = 'btn blue'>{{$parser->singular()}} Index</button>
     </form>
     <br>
-    <form method = 'POST' action = '@{!! url("{{$parser->singular()}}")!!}/@{!!${{$parser->singular()}}->id!!}/update'>
+    <form method = 'POST' action = '@{!! url("{{$parser->singular()}}")!!}/@{!!${{$parser->singular()}}->{{ucfirst($parser->singular())}}ID!!}/update'>
         <input type = 'hidden' name = '_token' value = '@{{Session::token()}}'>
         @foreach($dataSystem->dataScaffold('v') as $value)
         <div class="input-field col s6">

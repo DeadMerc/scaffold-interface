@@ -18,7 +18,7 @@ class {{studly_case(ucfirst($parser->plural()))}} extends Migration
     {
         Schema::create('{{$parser->plural()}}',function (Blueprint $table){
 
-        $table->increments('id');<?php $i = 0;?>
+        $table->increments('{{ucfirst($parser->singular())}}ID');<?php $i = 0;?>
 
         @foreach($dataSystem->dataScaffold('v') as $attr)
 

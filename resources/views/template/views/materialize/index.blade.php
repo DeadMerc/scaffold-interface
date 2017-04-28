@@ -45,9 +45,9 @@
                 @endif
                 <td>
                     <div class = 'row'>
-                        <a href = '#modal1' class = 'delete btn-floating modal-trigger red' data-link = "/{{$parser->singular()}}/@{!!${{$parser->singular()}}->id!!}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
-                        <a href = '#' class = 'viewEdit btn-floating blue' data-link = '/{{$parser->singular()}}/@{!!${{$parser->singular()}}->id!!}/edit'><i class = 'material-icons'>edit</i></a>
-                        <a href = '#' class = 'viewShow btn-floating orange' data-link = '/{{$parser->singular()}}/@{!!${{$parser->singular()}}->id!!}'><i class = 'material-icons'>info</i></a>
+                        <a href = '#modal1' class = 'delete btn-floating modal-trigger red' data-link = "/{{$parser->singular()}}/@{!!${{$parser->singular()}}->{{ucfirst($parser->singular())}}ID!!}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
+                        <a href = '#' class = 'viewEdit btn-floating blue' data-link = '/{{$parser->singular()}}/@{!!${{$parser->singular()}}->{{ucfirst($parser->singular())}}ID!!}/edit'><i class = 'material-icons'>edit</i></a>
+                        <a href = '#' class = 'viewShow btn-floating orange' data-link = '/{{$parser->singular()}}/@{!!${{$parser->singular()}}->{{ucfirst($parser->singular())}}ID!!}'><i class = 'material-icons'>info</i></a>
                     </div>
                 </td>
             </tr>
