@@ -56,7 +56,7 @@ class GuiController extends AppController
         $scaffoldInterface->model = $paths->modelPath();
         $scaffoldInterface->controller = $paths->controllerPath();
         $scaffoldInterface->views = $paths->dirPath();
-        $scaffoldInterface->tablename = $names->plural();
+        $scaffoldInterface->tablename = 'tbl'.ucfirst($names->singular());
         $scaffoldInterface->package = config('amranidev.config.package');
         $scaffoldInterface->save();
         if ($relations->getForeignKeys()) {
@@ -150,7 +150,7 @@ class GuiController extends AppController
     public function migrate()
     {
         try {
-            Artisan::call('migrate', ['--path' => config('amranidev.config.database')]);
+            //Artisan::call('migrate', ['--path' => config('amranidev.config.database')]);
 
             exec('cd '.base_path().' && composer dump-autoload');
         } catch (\Exception $e) {
